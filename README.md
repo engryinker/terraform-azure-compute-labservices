@@ -4,13 +4,13 @@ Org-standard Terraform wrapper for **Azure Lab Services** (lab plans + labs).
 
 ⚠️ **No AVM module exists for this resource.** Azure Lab Services (`Microsoft.LabServices`) has no published AVM module. The `Azure/terraform-azurerm-avm-res-devtestlab-lab` GitHub repo wraps the older, distinct "DevTest Labs" product and isn't published to the Terraform Registry anyway, so it can't be used here either. This wraps the native `azurerm_lab_service_plan` / `azurerm_lab_service_lab` resources directly and is intentionally conservative in scope. **Validate with `terraform plan` against your provider version before relying on this in production** -- it has had less real-world exercise than the AVM-backed repos in this org's module set. Swap it for an AVM module if/when Microsoft publishes one.
 
-Deploys into an existing resource group -- this module does not create the resource group itself. Compose with [terraform-azure-naming](https://github.com/<org>/terraform-azure-naming) and [terraform-azure-tags](https://github.com/<org>/terraform-azure-tags).
+Deploys into an existing resource group -- this module does not create the resource group itself. Compose with [terraform-azure-naming](https://github.com/engryinker/terraform-azure-naming) and [terraform-azure-tags](https://github.com/engryinker/terraform-azure-tags).
 
 ## Usage
 
 ```hcl
 module "labservices" {
-  source = "git::https://github.com/<org>/terraform-azure-compute-labservices.git?ref=v1.0.0"
+  source = "git::https://github.com/engryinker/terraform-azure-compute-labservices.git?ref=v1.0.0"
 
   resource_group_name = azurerm_resource_group.this.name
   location             = azurerm_resource_group.this.location
